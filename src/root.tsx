@@ -26,7 +26,7 @@ export default function Root() {
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Body>
-        <Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
           <ErrorBoundary>
             <A href="/">Index</A>
             <A href="/about">About</A>

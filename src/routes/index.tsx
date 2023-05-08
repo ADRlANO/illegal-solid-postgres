@@ -1,9 +1,17 @@
-import { sql } from "@vercel/postgres";
 import { For } from "solid-js";
+import { refetchRouteData, useRouteData } from "solid-start";
+import { createServerAction$ } from "solid-start/server";
+
+import usePokemon from "~/db/usePokemon";
 import { PokemonCollection, Pokemon } from "~/components";
+
+export function routeData() {
+  return usePokemon();
+}
 
 export default function Home() {
   // const { rows } = await sql`SELECT * FROM pokemon ORDER BY RANDOM() LIMIT 12`;
+  const pokemon = useRouteData<typeof routeData>();
   const rows = [{ id: 282, name: 'Gardevoir'}];
 
   return (
@@ -17,8 +25,3 @@ export default function Home() {
     </PokemonCollection>
   );
 }
-
-export const runtime = "edge";
-export const dynamic = "force-dynamic";
-
-// psql "postgres://default:y4TcpsPwAm5i@ep-long-sky-573524.us-east-1.postgres.vercel-storage.com:5432/verceldb" -f init.sql
