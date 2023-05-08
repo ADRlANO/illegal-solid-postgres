@@ -8,11 +8,14 @@ import {
   Head,
   Html,
   Meta,
+  Route,
   Routes,
   Scripts,
   Title,
 } from "solid-start";
 import "./root.css";
+
+import Layout from "./routes/layout";
 
 export default function Root() {
   return (
