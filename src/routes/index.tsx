@@ -8,13 +8,13 @@ import { PokemonCollection, Pokemon } from "~/components";
 export function routeData() {
   return createServerData$(async () => {
     const { rows } = await sql`SELECT * FROM pokemon ORDER BY RANDOM() LIMIT 12`;
+    rows.map((row) => ({ ...row, type: JSON.parse(row.type) }))
     return rows;
   })
 }
 
 export default function Home() {
   const pokemon = useRouteData<typeof routeData>();
-
   return (
     <>
       <PokemonCollection>

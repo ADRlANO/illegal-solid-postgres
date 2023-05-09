@@ -13,14 +13,8 @@ export function Pokemon({ id, name }) {
         width={96}
         height={96}
         alt={name}
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`}
       />
-      {/* <Image
-        width={96}
-        height={96}
-        alt={name}
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-      /> */}
       {name}
     </li>
   );
