@@ -28,8 +28,6 @@ export default function Root() {
       <Body>
         <Suspense fallback={<div>Loading...</div>}>
           <ErrorBoundary>
-            <A href="/">Index</A>
-            <A href="/about">About</A>
             <Routes>
               <FileRoutes />
             </Routes>

@@ -1,11 +1,10 @@
-import prisma from '../src/lib/prisma'
-import { Prisma } from '@prisma/client';
+import prisma from '~/lib/prisma'
 
-import PokemonSeed from '~/db/mocks/pokemon-seed'
+import PokemonSeed from '~/db/mocks/pokemon-seed`'
 
 async function main() {
   console.log('Start seeding ...')
-  const insertions = PokemonSeed.map((pokemon: Prisma.Pokemon) => (
+  const insertions = PokemonSeed.map((pokemon) => (
     prisma.users.upsert({
       where: { id: pokemon.id },
       update: {},
