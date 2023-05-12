@@ -29,7 +29,7 @@ export default function RootLayout() {
             <code class="py-0.5 px-1 text-sm rounded-md border border-gray-300 bg-gray-50 dark:bg-[#444] dark:border-[#666]">
               SELECT * FROM pokemon ORDER BY RANDOM() LIMIT 12
             </code>{" "}
-            from the edge, for every request.
+            for every request.
           </p>
           <p class="mt-2 text-center">
             What&apos;s best, the data fetching is defined directly within the
