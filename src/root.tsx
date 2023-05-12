@@ -15,8 +15,6 @@ import {
 } from "solid-start";
 import "./root.css";
 
-import Layout from "./routes/layout";
-
 export default function Root() {
   return (
     <Html lang="en">
@@ -25,7 +23,7 @@ export default function Root() {
         <Meta charset="utf-8" />
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Body>
+      <Body class="text-white">
         <Suspense fallback={<div>Loading...</div>}>
           <ErrorBoundary>
             <Routes>

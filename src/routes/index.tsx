@@ -23,7 +23,7 @@ function Home() {
             <Pokemon id={pokemon.id} name={pokemon.name} />
           )}
         </For>
-        <button onClick={() => refetchRouteData()}>Refresh</button>
+        <button class="bg-teal-400" onClick={() => refetchRouteData()}>Refresh</button>
       </PokemonCollection>
     </>
   );
@@ -32,11 +32,11 @@ function Home() {
 export default function RootLayout({ children }: { children: Component }) {
   return (
       <>
-        <main class="flex min-h-screen flex-col items-center flex-start px-6 pt-6">
+        <main class="flex min-h-screen w-full flex-col items-center flex-start px-6 pt-6 bg-gray-900">
           <h1 class="text-3xl font-bold mb-3">How is this not illegal?</h1>
           <p class="text-center">
             This page renders{" "}
-            <code class="py-0.5 px-1 text-sm rounded-md border border-gray-300 bg-gray-100 dark:bg-[#444] dark:border-[#666]">
+            <code class="py-0.5 px-1 text-sm rounded-md border border-gray-300 bg-gray-50 dark:bg-[#444] dark:border-[#666]">
               SELECT * FROM pokemon ORDER BY RANDOM() LIMIT 12
             </code>{" "}
             from the edge, for every request.
