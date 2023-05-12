@@ -1,5 +1,12 @@
+/*!
+ * Original code by https://twitter.com/rauchg
+ * 
+ * Credits to the Vercel team
+ * https://github.com/rauchg/how-is-this-not-illegal
+*/
+
+import { For } from "solid-js";
 import { sql } from "@vercel/postgres";
-import { For, Component } from "solid-js";
 import { createServerData$ } from "solid-start/server";
 import { refetchRouteData, useRouteData } from "solid-start";
 
@@ -8,28 +15,11 @@ import { PokemonCollection, Pokemon } from "~/components";
 export function routeData() {
   return createServerData$(async () => {
     const { rows } = await sql`SELECT * FROM pokemon ORDER BY RANDOM() LIMIT 12`;
-    rows.map((row) => ({ ...row, type: JSON.parse(row.type) }))
     return rows;
   });
 }
 
-function Home() {
-  const pokemon = useRouteData<typeof routeData>();
-  return (
-    <>
-      <PokemonCollection>
-        <For each={pokemon()}>
-          {(pokemon) => (
-            <Pokemon id={pokemon.id} name={pokemon.name} />
-          )}
-        </For>
-        <button class="bg-teal-400" onClick={() => refetchRouteData()}>Refresh</button>
-      </PokemonCollection>
-    </>
-  );
-}
-
-export default function RootLayout({ children }: { children: Component }) {
+export default function RootLayout() {
   return (
       <>
         <main class="flex min-h-screen w-full flex-col items-center flex-start px-6 pt-6 bg-gray-900">
@@ -45,7 +35,7 @@ export default function RootLayout({ children }: { children: Component }) {
             What&apos;s best, the data fetching is defined directly within the
             component tree thanks to React Server Components.{" "}
             <a
-              href="https://twitter.com/dan_abramov/status/1341217154566402050"
+              href="https://twitter.com/rauchg/status/1653448770766663680"
               target="_blank"
               class="underline"
             >
@@ -55,7 +45,7 @@ export default function RootLayout({ children }: { children: Component }) {
             <a
               class="underline"
               target="_blank"
-              href="https://github.com/rauchg/how-is-this-not-illegal"
+              href="https://github.com/ADRlANO/illegal-solid-postgres"
             >
               Source
             </a>
@@ -75,6 +65,22 @@ export default function RootLayout({ children }: { children: Component }) {
           </a>{" "}
           – Pokemon is © 1996-2023 Nintendo, Creatures, Inc., GAME FREAK
         </footer>
+    </>
+  );
+}
+
+function Home() {
+  const pokemon = useRouteData<typeof routeData>();
+  return (
+    <>
+      <PokemonCollection>
+        <For each={pokemon()}>
+          {(pokemon) => (
+            <Pokemon id={pokemon.id} name={pokemon.name} />
+          )}
+        </For>
+        <button class="bg-teal-400" onClick={() => refetchRouteData()}>Refresh</button>
+      </PokemonCollection>
     </>
   );
 }
